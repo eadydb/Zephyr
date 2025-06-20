@@ -1,0 +1,25 @@
+{
+  "name": "currenttime",
+  "version": "1.0.0",
+  "description": "Current time tool providing time information in various formats and timezones",
+  "author": "Zephyr Team",
+  "api_version": "1.0",
+  "entry_point": "currenttime.so",
+  "dependencies": [],
+  "permissions": ["time.read"],
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "default_timezone": {
+        "type": "string",
+        "default": "UTC",
+        "description": "Default timezone for time queries"
+      },
+      "default_format": {
+        "type": "string",
+        "default": "rfc3339",
+        "description": "Default time format"
+      }
+    }
+  }
+} 

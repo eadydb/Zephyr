@@ -1,0 +1,20 @@
+{
+  "name": "systeminfo",
+  "version": "1.0.0",
+  "description": "System information tool providing OS, architecture, memory, and runtime details",
+  "author": "Zephyr Team",
+  "api_version": "1.0",
+  "entry_point": "systeminfo.so",
+  "dependencies": [],
+  "permissions": ["system.read"],
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "detailed": {
+        "type": "boolean",
+        "default": true,
+        "description": "Include detailed memory statistics"
+      }
+    }
+  }
+} 

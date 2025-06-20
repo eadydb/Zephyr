@@ -1,0 +1,58 @@
+server:
+  name: "zephyr-mcp-server"
+  version: "1.0.0"
+  debug: false
+
+transport:
+  protocol: "stdio"
+  stdio:
+    buffer_size: 4096
+  sse:
+    port: 26841
+    host: "0.0.0.0"
+    cors_enabled: true
+  http:
+    port: 26842
+    host: "0.0.0.0"
+    timeout: 30s
+
+monitoring:
+  enabled: true
+  port: 26843
+  host: "0.0.0.0"
+  endpoints:
+    metrics: "/metrics"
+    health: "/health"
+  update_interval: "30s"
+
+plugins:
+  discovery:
+    enabled: true
+    directories: ["./plugins"]
+    scan_interval: "60s"
+  registry:
+    max_tools: 100
+  tools:
+    systeminfo:
+      enabled: true
+    currenttime:
+      enabled: true
+      settings:
+        timezone: "UTC"
+    fileops:
+      enabled: true
+      max_file_size: 1048576  # 1MB default
+      allowed_operations: ["read", "write", "list", "stat", "exists"]
+
+logging:
+  level: "info"
+  format: "json"
+  output: "stdout"
+
+security:
+  rate_limit:
+    enabled: true
+    requests_per_minute: 100
+  timeout:
+    request: "10s"
+    shutdown: "30s" 

@@ -1,0 +1,26 @@
+services:
+  zephyr-mcp:
+    image: zephyr-mcp-server:latest
+    container_name: zephyr-mcp
+    restart: unless-stopped
+    ports:
+      - "26841:26841"   # SSE传输端口  
+      - "26842:26842"   # HTTP传输端口
+      - "26843:26843"   # 监控端口
+    volumes:
+      - ./scripts/config.yaml:/app/config.yaml:ro
+    environment:
+      - ZEPHYR_LOG_LEVEL=info
+      - ZEPHYR_DEBUG=false
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:26843/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - zephyr-network
+
+networks:
+  zephyr-network:
+    driver: bridge 

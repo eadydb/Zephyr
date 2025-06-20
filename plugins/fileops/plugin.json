@@ -1,0 +1,25 @@
+{
+  "name": "fileops",
+  "version": "1.0.0", 
+  "description": "File system operations tool providing read, write, list, and metadata operations",
+  "author": "Zephyr Team",
+  "api_version": "1.0",
+  "entry_point": "fileops.so",
+  "dependencies": [],
+  "permissions": ["file.read", "file.write", "file.list"],
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "max_file_size": {
+        "type": "integer",
+        "default": 10485760,
+        "description": "Maximum file size to read in bytes (default: 10MB)"
+      },
+      "allowed_paths": {
+        "type": "array",
+        "items": {"type": "string"},
+        "description": "List of allowed base paths for file operations"
+      }
+    }
+  }
+} 

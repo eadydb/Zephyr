@@ -1,0 +1,21 @@
+# Build artifacts
+bin/
+*.so
+
+# Development files
+.git/
+.gitignore
+README.md
+docs/
+
+# Memory bank files (not needed for container)
+memory-bank/
+
+# Keep these essential files:
+# - scripts/ (needed for plugin building)
+# - plugins/ (source code)
+# - cmd/ (main application)
+# - internal/ (application code)
+# - pkg/ (libraries)
+# - go.mod, go.sum (dependencies)
+# - Makefile (might be needed) 
